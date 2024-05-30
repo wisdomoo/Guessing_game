@@ -9,7 +9,18 @@ const maxTries = 2;
 
 guessButton.addEventListener('click', (e) => {
     e.preventDefault();
-  
+  if (isNaN(guess.value)) {
+    guessOutput.innerHTML = 'Please enter a number';
+    return;
+    }
+    if (guess.value < 1 || guess.value > 100) {
+        guessOutput.innerHTML = 'Please enter a number between 1 and 100';
+        return;
+    }
+    if (guess.value === '') {
+        guessOutput.innerHTML = 'Please enter a number';
+        return;
+    }
     console.log(tries);
     if (tries <= maxTries){
         if (guess.value === randomNumber) {
